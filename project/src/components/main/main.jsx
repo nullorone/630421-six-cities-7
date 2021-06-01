@@ -1,80 +1,8 @@
 import React from 'react';
+import {string, number, bool, shape, arrayOf} from 'prop-types';
 import Card from '../card/card';
 
 function Main(props) {
-  const cards = [
-    {
-      id: 1,
-      name: 'Beautiful &amp; luxurious apartment at great location',
-      type: 'Apartment',
-      link: '#',
-      img: {
-        src: 'img/apartment-01.jpg',
-        alt: 'Place image',
-      },
-      countStars: 4,
-      price: 120,
-      isPremium: true,
-      isFavorites: false,
-    },
-    {
-      id: 2,
-      name: 'Wood and stone place',
-      type: 'Private room',
-      link: '#',
-      img: {
-        src: 'img/room.jpg',
-        alt: 'Place image',
-      },
-      countStars: 4,
-      price: 80,
-      isPremium: false,
-      isFavorites: true,
-    },
-    {
-      id: 3,
-      name: 'Canal View Prinsengracht',
-      type: 'Apartment',
-      link: '#',
-      img: {
-        src: 'img/apartment-02.jpg',
-        alt: 'Place image',
-      },
-      countStars: 4,
-      price: 132,
-      isPremium: false,
-      isFavorites: false,
-    },
-    {
-      id: 4,
-      name: 'Nice, cozy, warm big bed apartment',
-      type: 'Apartment',
-      link: '#',
-      img: {
-        src: 'img/apartment-03.jpg',
-        alt: 'Place image',
-      },
-      countStars: 5,
-      price: 180,
-      isPremium: true,
-      isFavorites: false,
-    },
-    {
-      id: 5,
-      name: 'Wood and stone place',
-      type: 'Private room',
-      link: '#',
-      img: {
-        src: 'img/room.jpg',
-        alt: 'Place image',
-      },
-      countStars: 4,
-      price: 80,
-      isPremium: false,
-      isFavorites: true,
-    },
-  ];
-
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -164,7 +92,7 @@ function Main(props) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => <Card key={`card-${card.id}`} {...card}/>)}
+                {props.cards.map((card) => <Card key={`card-${card.id}`} {...card}/>)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -176,5 +104,24 @@ function Main(props) {
     </div>
   );
 }
+
+Main.propTypes = {
+  cards: arrayOf(
+    shape({
+      id: number.isRequired,
+      name: string.isRequired,
+      type: string.isRequired,
+      link: string.isRequired,
+      img: shape({
+        src: string.isRequired,
+        alt: string.isRequired,
+      }),
+      countStars: number.isRequired,
+      price: number.isRequired,
+      isPremium: bool.isRequired,
+      isFavorites: bool.isRequired,
+    }),
+  ),
+};
 
 export default Main;

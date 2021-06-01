@@ -3,7 +3,7 @@ import {string, number, bool, shape} from 'prop-types';
 
 function Card(props) {
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" data-id={props.id}>
       <div className="cities__image-wrapper place-card__image-wrapper">
         {props.isPremium && (
           <div className="place-card__mark">
@@ -49,6 +49,7 @@ function Card(props) {
 }
 
 Card.propTypes = {
+  id: number.isRequired,
   name: string.isRequired,
   type: string.isRequired,
   link: string.isRequired,
