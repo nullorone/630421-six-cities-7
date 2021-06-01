@@ -1,15 +1,16 @@
 import React from 'react';
-import Card from "../card/card";
+import Card from '../card/card';
 
 function Main(props) {
   const cards = [
     {
-      name: `Beautiful &amp; luxurious apartment at great location`,
-      type: `Apartment`,
-      link: `#`,
+      id: 1,
+      name: 'Beautiful &amp; luxurious apartment at great location',
+      type: 'Apartment',
+      link: '#',
       img: {
-        src: `img/apartment-01.jpg`,
-        alt: `Place image`,
+        src: 'img/apartment-01.jpg',
+        alt: 'Place image',
       },
       countStars: 4,
       price: 120,
@@ -17,12 +18,13 @@ function Main(props) {
       isFavorites: false,
     },
     {
-      name: `Wood and stone place`,
-      type: `Private room`,
-      link: `#`,
+      id: 2,
+      name: 'Wood and stone place',
+      type: 'Private room',
+      link: '#',
       img: {
-        src: `img/room.jpg`,
-        alt: `Place image`,
+        src: 'img/room.jpg',
+        alt: 'Place image',
       },
       countStars: 4,
       price: 80,
@@ -30,12 +32,13 @@ function Main(props) {
       isFavorites: true,
     },
     {
-      name: `Canal View Prinsengracht`,
-      type: `Apartment`,
-      link: `#`,
+      id: 3,
+      name: 'Canal View Prinsengracht',
+      type: 'Apartment',
+      link: '#',
       img: {
-        src: `img/apartment-02.jpg`,
-        alt: `Place image`,
+        src: 'img/apartment-02.jpg',
+        alt: 'Place image',
       },
       countStars: 4,
       price: 132,
@@ -43,12 +46,13 @@ function Main(props) {
       isFavorites: false,
     },
     {
-      name: `Nice, cozy, warm big bed apartment`,
-      type: `Apartment`,
-      link: `#`,
+      id: 4,
+      name: 'Nice, cozy, warm big bed apartment',
+      type: 'Apartment',
+      link: '#',
       img: {
-        src: `img/apartment-03.jpg`,
-        alt: `Place image`,
+        src: 'img/apartment-03.jpg',
+        alt: 'Place image',
       },
       countStars: 5,
       price: 180,
@@ -56,12 +60,13 @@ function Main(props) {
       isFavorites: false,
     },
     {
-      name: `Wood and stone place`,
-      type: `Private room`,
-      link: `#`,
+      id: 5,
+      name: 'Wood and stone place',
+      type: 'Private room',
+      link: '#',
       img: {
-        src: `img/room.jpg`,
-        alt: `Place image`
+        src: 'img/room.jpg',
+        alt: 'Place image',
       },
       countStars: 4,
       price: 80,
@@ -159,7 +164,7 @@ function Main(props) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => <Card {...card}/>)}
+                {cards.map((card) => <Card key={`card-${card.id}`} {...card}/>)}
               </div>
             </section>
             <div className="cities__right-section">
