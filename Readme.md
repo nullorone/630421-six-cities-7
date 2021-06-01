@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Yaroslav Sveshnikov](https://up.htmlacademy.ru/react/7/user/630421).
-* Наставник: `Неизвестно`.
+* Наставник: `null`.
 
 ---
 
