@@ -1,10 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {arrayOf, bool, number, shape, string} from 'prop-types';
+import {arrayOf, shape} from 'prop-types';
 import Main from '../main/main';
 import SingIn from '../sing-in/sing-in';
 import Favorites from '../favorites/favorites';
 import Room from '../room/room';
+import cardProp from '../card/card.prop';
 
 
 function App(props) {
@@ -12,13 +13,13 @@ function App(props) {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main cards={props.cards}/>
+          <Main offers={props.offers}/>
         </Route>
         <Route exact path="/login">
           <SingIn/>
         </Route>
         <Route exact path="/favorites">
-          <Favorites/>
+          <Favorites offers={props.offers}/>
         </Route>
         <Route exact path="/offer/:id">
           <Room/>
@@ -29,22 +30,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  cards: arrayOf(
-    shape({
-      id: number.isRequired,
-      name: string.isRequired,
-      type: string.isRequired,
-      link: string.isRequired,
-      img: shape({
-        src: string.isRequired,
-        alt: string.isRequired,
-      }),
-      countStars: number.isRequired,
-      price: number.isRequired,
-      isPremium: bool.isRequired,
-      isFavorites: bool.isRequired,
-    }),
-  ),
+  offers: arrayOf(shape(cardProp)),
 };
 
 export default App;

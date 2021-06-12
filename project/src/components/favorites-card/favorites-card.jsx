@@ -1,33 +1,28 @@
 import React from 'react';
-import cardProp from './card.prop';
+import cardProp from '../card/card.prop';
 import {Link} from 'react-router-dom';
 
-function Card(props) {
+function FavoritesCard(props) {
   return (
-    <article className="cities__place-card place-card" data-id={props.id} onMouseEnter={props.handleCardMouseEnter}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        {props.isPremium && (
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>
-        )}
+    <article className="favorites__card place-card">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`/offer/${props.id}`}>
           <img
             className="place-card__image"
             src={props.previewImage}
-            width="260"
-            height="200"
-            alt={`Place ${props.title}`}
+            width="150"
+            height="110"
+            alt={`${props.title} place`}
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{props.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button${props.isFavorite && ' place-card__bookmark-button--active'} button`} type="button">
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"/>
             </svg>
@@ -36,7 +31,7 @@ function Card(props) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${(props.rating * 100 / 5)}%`}}/>
+            <span style={{width: `${props.rating * 100 / 5}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -49,6 +44,6 @@ function Card(props) {
   );
 }
 
-Card.propTypes = cardProp;
+FavoritesCard.propTypes = cardProp;
 
-export default Card;
+export default FavoritesCard;
