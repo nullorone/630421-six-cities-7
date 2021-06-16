@@ -119,7 +119,7 @@ export const offers = [
       'is_pro': true,
       'name': 'Gogy',
     },
-    'id': 2,
+    'id': 3,
     'images': ['img/apartment-01.jpg'],
     'is_favorite': false,
     'is_premium': false,
