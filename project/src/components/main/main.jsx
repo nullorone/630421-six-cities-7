@@ -3,8 +3,24 @@ import {arrayOf, shape} from 'prop-types';
 import cardProp from '../card/card.prop';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
+import Map from '../map/map';
+import LocationList from '../location-list/location-list';
 
 function Main(props) {
+  const offerLocations = props.offers.map((offer) => offer.location);
+  const citiesList = props.offers.reduce((acc, offer) => {
+    const hasCityName = acc.length > 0 && acc.find((city) => city.name === offer.city.name);
+
+    if (!hasCityName) {
+      acc.push({
+        id: offer.id,
+        name: offer.city.name,
+      });
+    }
+
+    return acc;
+  }, []);
+
   return (
     <div className="page page--gray page--main">
       <Header isActiveLogo />
@@ -13,38 +29,7 @@ function Main(props) {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <LocationList cities={citiesList}/>
           </section>
         </div>
         <div className="cities">
@@ -70,7 +55,9 @@ function Main(props) {
               <OfferList offers={props.offers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"/>
+              <section className="cities__map map">
+                <Map locations={offerLocations}/>
+              </section>
             </div>
           </div>
         </div>
