@@ -17,7 +17,7 @@ export const reviews = [
     'id': 1,
     'rating': 4,
     'user': {
-      'avatar_url': 'img/1.png',
+      'avatar_url': 'img/avatar-max.jpg',
       'id': 4,
       'is_pro': false,
       'name': 'Max',
@@ -26,7 +26,7 @@ export const reviews = [
   {
     'comment': 'A picturesque that hides behind a river by the unique lightness.',
     'date': '2020-05-23T09:13:56.569Z',
-    'id': 1,
+    'id': 2,
     'rating': 5,
     'user': {
       'avatar_url': 'img/2.png',
@@ -38,7 +38,7 @@ export const reviews = [
   {
     'comment': 'Cool',
     'date': '2017-05-08T14:13:56.569Z',
-    'id': 2,
+    'id': 3,
     'rating': 3,
     'user': {
       'avatar_url': 'img/1.png',
