@@ -1,4 +1,4 @@
-import {arrayOf, bool, number, shape, string, func} from 'prop-types';
+import {arrayOf, bool, number, shape, string} from 'prop-types';
 
 const locationProp = shape({
   latitude: number.isRequired,
@@ -31,5 +31,4 @@ export default {
   rating: number.isRequired,
   title: string.isRequired,
   type: string.isRequired,
-  handleCardMouseEnter: func,
 };
