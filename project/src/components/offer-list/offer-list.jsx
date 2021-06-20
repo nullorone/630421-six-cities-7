@@ -17,7 +17,7 @@ function OfferList(props) {
           handleCardMouseEnter={() => {
             setCardIdx(offer.id);
           }}
-          {...offer}
+          card={offer}
         />
       ))}
     </div>

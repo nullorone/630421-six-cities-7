@@ -34,6 +34,8 @@ function Map(props) {
         .marker([location.latitude, location.longitude], {icon})
         .addTo(map);
     });
+
+    return () => map.remove();
   }, [props.locations]);
 
 
