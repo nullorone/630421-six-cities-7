@@ -1,24 +1,27 @@
 import React from 'react';
-import {arrayOf, shape, number, string} from 'prop-types';
 import classNames from 'classnames';
+import {func, string} from 'prop-types';
+import {ActionCreator} from '../../store/action';
+import {connect} from 'react-redux';
+
+const citiesList = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
 function LocationList(props) {
-  const [isActiveCityId, setIsActiveCityId] = React.useState(null);
-
   return (
     <ul className="locations__list tabs__list">
-      {props.cities.map((city, idx) => (
-        <li key={city.id} className="locations__item">
+      {citiesList.map((city, idx) => (
+        <li key={`city-name-${city}`} className="locations__item">
           <a
             className={classNames(
               'locations__item-link tabs__item',
-              (city.id === isActiveCityId || idx === 0) && 'tabs__item--active',
+              (city === props.city) && 'tabs__item--active',
             )}
             onClick={() => {
-              setIsActiveCityId(city.id);
+              props.changeCity(city);
+              props.updateOffers(city);
             }}
           >
-            <span>{city.name}</span>
+            <span>{city}</span>
           </a>
         </li>
       ))}
@@ -27,10 +30,22 @@ function LocationList(props) {
 }
 
 LocationList.propTypes = {
-  cities: arrayOf(shape({
-    id: number.isRequired,
-    name: string.isRequired,
-  })),
+  city: string.isRequired,
+  changeCity: func.isRequired,
+  updateOffers: func.isRequired,
 };
 
-export default LocationList;
+const mapStateToProps = (state) => ({
+  city: state.city,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeCity(name) {
+    dispatch(ActionCreator.changeCity(name));
+  },
+  updateOffers(name) {
+    dispatch(ActionCreator.filteredOffers(name));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationList);
