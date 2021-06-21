@@ -1,17 +1,21 @@
 const ActionType = {
-  SET_CITY: 'SET_CITY',
-  SET_OFFERS: 'SET_OFFERS',
+  CHANGE_CITY: 'CHANGE_CITY',
+  FILTERED_OFFERS: 'FILTERED_OFFERS',
+  GET_OFFERS: 'GET_OFFERS',
 };
 
-const ActionCreator = () => ({
-  setCity: (city) => ({
-    type: ActionType.SET_CITY,
+const ActionCreator = {
+  changeCity: (city) => ({
+    type: ActionType.CHANGE_CITY,
     payload: city,
   }),
-  setOffers: (offers) => ({
-    type: ActionType.SET_OFFERS,
-    payload: offers,
+  filteredOffers: (city) => ({
+    type: ActionType.FILTERED_OFFERS,
+    payload: city,
   }),
-});
+  getOffers: () => ({
+    type: ActionType.GET_OFFERS,
+  }),
+};
 
-export {ActionCreator};
+export {ActionType, ActionCreator};
