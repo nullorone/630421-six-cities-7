@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import {offers as mockOffers} from './mocks/offers';
 import {reviews as mockReviews} from './mocks/reviews';
 import Adapter from './utils/adapter';
+import {configureStore} from '@reduxjs/toolkit';
+import {Provider} from 'react-redux';
+import {reducer} from './store/reducer';
 
-const offers = new Adapter(mockOffers).normalize();
 const reviews = new Adapter(mockReviews).normalize();
+const state = configureStore({reducer});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App offers={offers} reviews={reviews}/>
+    <Provider store={state}>
+      <App reviews={reviews}/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'));
