@@ -7,6 +7,7 @@ import Favorites from '../favorites/favorites';
 import Room from '../room/room';
 import cardProp from '../card/card.prop';
 import reviewProp from '../review/review.prop';
+import {connect} from 'react-redux';
 
 
 function App(props) {
@@ -40,4 +41,9 @@ App.propTypes = {
   reviews: arrayOf(shape(reviewProp)),
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
