@@ -21,6 +21,7 @@ function Card(props) {
       className={classNames(articleClass, 'place-card')}
       data-id={props.card.id}
       onMouseEnter={props.handleCardMouseEnter}
+      onMouseLeave={props.handleCardMouseLeave}
     >
       <div className={classNames(cardWrapperClass, 'place-card__image-wrapper')}>
         {props.card.isPremium && (
@@ -70,6 +71,7 @@ Card.propTypes = {
   type: string,
   card: shape(cardProp),
   handleCardMouseEnter: func,
+  handleCardMouseLeave: func,
 };
 
 export default Card;
