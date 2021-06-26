@@ -9,7 +9,7 @@ const initState = {
   initOffers: [],
   offers: [],
   reviews: [],
-  cardIdxHover: null,
+  cardIdxHovered: null,
 };
 
 const reducer = (state = initState, {type, payload}) => {
@@ -45,7 +45,7 @@ const reducer = (state = initState, {type, payload}) => {
     case ActionType.SET_CARD_IDX_HOVER:
       return {
         ...state,
-        cardIdxHover: payload,
+        cardIdxHovered: payload,
       };
     default:
       return state;
