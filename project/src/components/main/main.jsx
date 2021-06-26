@@ -9,7 +9,7 @@ import Sort from '../sort/sort';
 
 function Main(props) {
   const citiesOffers = props.offers.filter((offer) => offer.city.name === props.city);
-  const offerLocations = citiesOffers.map((offer) => offer.location);
+  const offerLocations = citiesOffers.map((offer) => ({id: offer.id, ...offer.location}));
 
   return (
     <div className="page page--gray page--main">
