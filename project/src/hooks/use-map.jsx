@@ -13,6 +13,8 @@ function useMap(mapRef, location) {
           lng: longitude,
         },
         zoom,
+        zoomControl: false,
+        marker: true,
       });
 
       leaflet
