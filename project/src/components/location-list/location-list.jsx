@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeCity(name));
   },
   updateOffers(name) {
-    dispatch(ActionCreator.filteredOffers(name));
+    dispatch(ActionCreator.filteredOffersOfCity(name));
   },
 });
 
