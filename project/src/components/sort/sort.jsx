@@ -2,15 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import {SortName} from '../../utils/const';
 import {ActionCreator} from '../../store/action';
-import {connect} from 'react-redux';
-import {func} from 'prop-types';
+import {useDispatch} from 'react-redux';
 
 const SORT_ITEMS = Object.values(SortName);
 
-function Sort(props) {
+function Sort() {
   const [currentOptionIdx, setCurrentOptionIdx] = React.useState(null);
   const [currentOption, setCurrentOption] = React.useState(SORT_ITEMS[0]);
   const [isOpened, setIsOpened] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -39,7 +40,7 @@ function Sort(props) {
               setCurrentOptionIdx(idx);
               setCurrentOption(item);
               setIsOpened(false);
-              props.getFilteredOffers(item);
+              dispatch(ActionCreator.filteredOffersOfSort(item));
             }}
           >
             {item}
@@ -50,15 +51,4 @@ function Sort(props) {
   );
 }
 
-Sort.propTypes = {
-  getFilteredOffers: func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  getFilteredOffers(sortName) {
-    dispatch(ActionCreator.filteredOffersOfSort(sortName));
-  },
-});
-
-export {Sort};
-export default connect(null, mapDispatchToProps)(Sort);
+export default Sort;

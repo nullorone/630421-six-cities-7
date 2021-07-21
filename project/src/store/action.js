@@ -3,7 +3,7 @@ const ActionType = {
   SET_CARD_IDX_HOVER: 'SET_CARD_IDX_HOVER',
   FILTERED_OFFERS_OF_CITY: 'FILTERED_OFFERS_OF_CITY',
   FILTERED_OFFERS_OF_SORT: 'FILTERED_OFFERS_OF_SORT',
-  GET_OFFERS: 'GET_OFFERS',
+  GET_HOTELS: 'GET_HOTELS',
   GET_REVIEWS: 'GET_REVIEWS',
 };
 
@@ -24,8 +24,9 @@ const ActionCreator = {
     type: ActionType.SET_CARD_IDX_HOVER,
     payload: id,
   }),
-  getOffers: () => ({
-    type: ActionType.GET_OFFERS,
+  getHotels: (hotels) => ({
+    type: ActionType.GET_HOTELS,
+    payload: hotels,
   }),
   getReviews: () => ({
     type: ActionType.GET_REVIEWS,

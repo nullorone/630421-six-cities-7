@@ -1,0 +1,26 @@
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper__title {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.1;
+  color: tomato;
+  text-align: center;
+}
+
+.wrapper__link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #3388ff;
+}
+
+.wrapper__link:hover {
+  text-decoration: underline;
+}

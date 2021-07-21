@@ -2,17 +2,11 @@ import React from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {arrayOf, shape, number} from 'prop-types';
-import {connect} from 'react-redux';
 import useMap from '../../hooks/use-map';
-
-// {
-//   center: [52.38333, 4.9],
-//     zoom: 12,
-//   zoomControl: false,
-//   marker: true,
-// }
+import {useSelector} from 'react-redux';
 
 function Map(props) {
+  const cardIdxSelector = useSelector((state) => state.cardIdxHovered);
   const mapRef = React.useRef(null);
   const map = useMap(mapRef, props.locations[0]);
 
@@ -34,12 +28,12 @@ function Map(props) {
         leaflet
           .marker([location.latitude, location.longitude],
             {
-              icon: props.cardIdxHovered === location.id ? activeIcon : defaultIcon,
+              icon: cardIdxSelector === location.id ? activeIcon : defaultIcon,
             })
           .addTo(map);
       });
     }
-  }, [map, defaultIcon, activeIcon, props.locations, props.cardIdxHovered]);
+  }, [map, defaultIcon, activeIcon, props.locations, cardIdxSelector]);
 
 
   return (
@@ -48,7 +42,6 @@ function Map(props) {
 }
 
 Map.propTypes = {
-  cardIdxHovered: number,
   locations: arrayOf(shape({
     id: number,
     latitude: number.isRequired,
@@ -57,9 +50,4 @@ Map.propTypes = {
   })),
 };
 
-const mapStateToProps = (state) => ({
-  cardIdxHovered: state.cardIdxHovered,
-});
-
-export {Map};
-export default connect(mapStateToProps)(Map);
+export default Map;

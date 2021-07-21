@@ -4,8 +4,22 @@ import App from './components/app/app';
 import {configureStore} from '@reduxjs/toolkit';
 import {Provider} from 'react-redux';
 import {reducer} from './store/reducer';
+import {createAPI} from './store/api';
+import {fetchHotels} from './store/api-actions';
 
-const state = configureStore({reducer});
+const api = createAPI();
+
+const state = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    thunk: {
+      extraArgument: api,
+    },
+  }),
+});
+
+
+state.dispatch(fetchHotels());
 
 ReactDOM.render(
   <React.StrictMode>
