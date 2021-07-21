@@ -1,5 +1,4 @@
 import Adapter from '../utils/adapter';
-import {offers as mockOffers} from '../mocks/offers';
 import {reviews as mockReviews} from '../mocks/reviews';
 import {ActionType} from './action';
 import {SortName, INIT_CITY_NAME} from '../utils/const';
@@ -10,15 +9,17 @@ const initState = {
   offers: [],
   reviews: [],
   cardIdxHovered: null,
+  isDataLoaded: false,
 };
 
 const reducer = (state = initState, {type, payload}) => {
   switch (type) {
-    case ActionType.GET_OFFERS:
+    case ActionType.GET_HOTELS:
       return {
         ...state,
-        offers: [...new Adapter(mockOffers).normalize()],
-        initOffers: [...new Adapter(mockOffers).normalize()],
+        offers: [...new Adapter(payload).normalize()],
+        initOffers: [...new Adapter(payload).normalize()],
+        isDataLoaded: true,
       };
     case ActionType.GET_REVIEWS:
       return {
