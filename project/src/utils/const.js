@@ -6,3 +6,11 @@ export const SortName = {
   toLow: 'Price: high to low',
   top: 'Top rated first',
 };
+
+export const APIRoute = {
+  HOTELS: '/hotels',
+  FAVORITE: '/favorite',
+  COMMENTS: '/comments',
+  LOGIN: '/login',
+  LOGOUT: '/logout',
+};
